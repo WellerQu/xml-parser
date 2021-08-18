@@ -1,6 +1,6 @@
+*.log
+.DS_Store
 node_modules
-.idea/
-.vscode/
-npm-debug.log
-build/
-types/
+.cache
+dist
+.vscode

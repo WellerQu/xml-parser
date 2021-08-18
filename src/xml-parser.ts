@@ -4,16 +4,16 @@ interface Token {
   content: string
 }
 
-export interface XMLSchema {
+interface XMLSchema {
   location: [number, number]
 }
 
-interface XMLDeclaration extends XMLSchema {
+export interface XMLDeclaration extends XMLSchema {
   version: string
   encoding: string
 }
 
-interface XMLAttribute extends XMLSchema {
+export interface XMLAttribute extends XMLSchema {
   name: string
   value: string
 }
@@ -45,7 +45,7 @@ const tokenizers: [RegExp, number, Token['type']][] = [
 function lexer(source: string): Token[] {
   const tokens: Token[] = []
 
-  let start: number = 0
+  let start = 0
   let tmp: string = source.slice(start)
 
   while (tmp.length > 0) {
@@ -118,7 +118,7 @@ function resolveNodeName(token: Token): string {
   return result[1]
 }
 
-function toXMLSchema(tokens: Token[]): XMLDocument {
+function toXMLDocument(tokens: Token[]): XMLDocument {
   const analyzeStack: XMLNode[] = []
   const doc: XMLDocument = {
     root: undefined
@@ -132,7 +132,7 @@ function toXMLSchema(tokens: Token[]): XMLDocument {
     if (token.type === 'space') {
       // TODO: some code
     } else if (token.type === 'declaration') {
-      // TODO: some code
+      // TODO: 等有空了再填
     } else if (token.type === 'tagSingle') {
       const node: XMLNode = {
         name: resolveNodeName(token),
@@ -175,15 +175,15 @@ function toXMLSchema(tokens: Token[]): XMLDocument {
   if (analyzeStack.length === 1 && !doc.root) {
     doc.root = analyzeStack[0]
   } else if (analyzeStack.length > 1) {
-    throw new Error('parse error: xml格式有误')
+    throw new Error('parse error: XML format is wrong')
   }
 
   return doc
 }
 
-export const parseXML = (source: string) => {
+export const parse = (source: string): XMLDocument => {
   const tokens = lexer(source).filter(item => item.type !== 'space')
 
-  const schema = toXMLSchema(tokens)
+  const schema = toXMLDocument(tokens)
   return schema
 }

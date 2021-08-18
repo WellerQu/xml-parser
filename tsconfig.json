@@ -1,37 +1,27 @@
 {
+  // see https://www.typescriptlang.org/tsconfig to better understand tsconfigs
   "compilerOptions": {
+    "experimentalDecorators": true,
+    "downlevelIteration": true,
+    "allowJs": true,
     "target": "es5",
     "lib": [
       "dom",
       "dom.iterable",
       "esnext"
     ],
+    "module": "ESNext",
     "sourceMap": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "experimentalDecorators": true,
     "strict": true,
-    "strictNullChecks": true,
-    "forceConsistentCasingInFileNames": true,
-    "module": "esnext",
-    "downlevelIteration": true,
     "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "removeComments": true,
-    "noUnusedLocals": true,
-    "noImplicitAny": true,
-    "noImplicitReturns": false,
-    "noImplicitThis": true,
-    "noUnusedParameters": true
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "declaration": true,
+    "noImplicitReturns": true,
+    "declarationDir": "dist",
+    "outDir": "dist"
   },
-  "include": [
-    "src/**/*.ts"
-  ],
-  "exclude": [
-    "**/*.spec.ts",
-    "build",
-    "node_modules"
-  ]
+  "include": ["src", "typings"]
 }
