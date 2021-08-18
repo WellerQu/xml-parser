@@ -16,7 +16,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git@code.bizseer.com:frontend/xml-parser.git"
+    "url": "git@github.com:WellerQu/xml-parser.git"
   },
   "author": "nix",
   "license": "GPL-3.0-or-later",
@@ -37,8 +37,5 @@
   "files": [
     "dist",
     "typings"
-  ],
-  "publishConfig": {
-    "registry": "https://nexus.bizseer.com/repository/npm-private"
-  }
+  ]
 }
