@@ -1,0 +1,51 @@
+{
+  "name": "xml-parser",
+  "version": "0.0.1",
+  "description": "transfer XML String to JSON",
+  "main": "build/commonjs/regExpGenerator.js",
+  "module": "build/esm/regExpGenerator.js",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "build": "tsc --build tsconfig.cjs.json && tsc --build tsconfig.esm.json",
+    "prepublishOnly": "npm run build",
+    "prebuild": "npm run lint && npm test && npm run types",
+    "lint": "eslint -c .eslintrc.commit.yml src/**/*.ts --fix",
+    "types": "tsc --build tsconfig.types.json"
+  },
+  "keywords": [
+    "regexp",
+    "generate",
+    "sample",
+    "strings"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:WellerQu/regExpGenerator.git"
+  },
+  "files": [
+    "build/*",
+    "src/*"
+  ],
+  "author": "nix",
+  "license": "GPL-3.0-or-later",
+  "devDependencies": {
+    "@types/jest": "^26.0.14",
+    "@typescript-eslint/eslint-plugin": "^4.4.0",
+    "@typescript-eslint/parser": "^4.4.0",
+    "eslint": "^7.11.0",
+    "husky": "^4.3.0",
+    "jest": "^26.5.3",
+    "lint-staged": "^10.4.0",
+    "ts-jest": "^26.4.1",
+    "typescript": "^4.0.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.ts": "eslint -c .eslintrc.commit.yml --cache --fix"
+  }
+}
