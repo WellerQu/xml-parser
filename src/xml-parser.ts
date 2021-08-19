@@ -4,7 +4,7 @@ interface Token {
   content: string
 }
 
-interface XMLSchema {
+export interface XMLSchema {
   location: [number, number]
 }
 
