@@ -8,28 +8,73 @@ interface XMLSchema {
   location: [number, number]
 }
 
+/**
+ * 文档声明
+ */
 export interface XMLDeclaration extends XMLSchema {
+  /**
+   * 版本
+   */
   version: string
+  /**
+   * 编码格式
+   */
   encoding: string
 }
 
+/**
+ * 文档节点属性
+ */
 export interface XMLAttribute extends XMLSchema {
+  /**
+   * 属性名称
+   */
   name: string
+  /**
+   * 属性值
+   */
   value: string
 }
 
+/**
+ * 文档文本节点
+ */
 export interface XMLTextNode extends XMLSchema {
+  /**
+   * 节点内容
+   */
   text: string
 }
 
+/**
+ * 文档节点
+ */
 export interface XMLNode extends XMLSchema {
+  /**
+   * 节点名称
+   */
   name: string
+  /**
+   * 节点属性集合
+   */
   attributes: XMLAttribute[]
+  /**
+   * 子节点集合
+   */
   children: (XMLNode | XMLTextNode)[],
 }
 
+/**
+ * XML 文档对象
+ */
 export interface XMLDocument {
+  /**
+   * 文档声明
+   */
   declaration?: XMLDeclaration
+  /**
+   * 文档根节点
+   */
   root: XMLNode | undefined
 }
 
